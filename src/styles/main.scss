@@ -153,7 +153,7 @@
 }
 
 .wrapper {
-    --text-color: rgba(255, 255, 255, 0.8);
+    // --text-color: rgba(243, 243, 243, 0.8);
     position: relative;
     a {
         position: absolute;
@@ -231,9 +231,10 @@
 }
 
 .fill-text {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--text-color);
-    font-family: 'cardo', serif;
+    color: #fbf73a;
+    -webkit-text-stroke: 0px var(--text-color);
+    font-family: 'goonies', serif;
+    font-display: swap;
     &:before {
         content: attr(data-text);
         position: absolute;
@@ -241,7 +242,7 @@
     &:after {
         -webkit-text-stroke: initial;
         font: 2vw/1.5 verdana;
-        color: #999;
+        color: rgb(153, 153, 153);
         position: absolute;
         bottom: 0;
         left: 50%;

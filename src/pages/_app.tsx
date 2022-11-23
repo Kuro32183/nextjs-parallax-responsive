@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ParallaxProvider>
       <ChakraProvider theme={theme} resetCSS>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
           <Component {...pageProps} />
         </AnimatePresence>
       </ChakraProvider>

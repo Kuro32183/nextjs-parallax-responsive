@@ -4,11 +4,11 @@ import { Box } from '@chakra-ui/react'
 const Smoke = () => {
   return (
     <Box
-      right={{ sm: '-45%', md: '-33%', lg: '0' }}
+      right={{ sm: '-35%', md: '-23%', lg: '0' }}
       className="vapor"
       position="absolute"
       display="flex"
-      pt={{ sm: '400px', md: '550px', lg: '300px' }}
+      pt={{ sm: '250px', md: '450px', lg: '300px' }}
       transform="rotate(90deg)"
     >
       <span className="white" style={{ '--i': 6, background: '#fff' }}></span>

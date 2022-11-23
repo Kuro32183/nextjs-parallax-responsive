@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { Box } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
+import { DescTextDesktop } from '../components/item/DescText'
 
 const SmIntro = dynamic(
   () =>
@@ -27,7 +28,7 @@ const MdIntro = dynamic(
 const LgIntro = dynamic(
   () =>
     import('../components/LgIntro').then((mod) => {
-      if (window.innerWidth > 960) {
+      if (window.innerWidth >= 960) {
         return mod.LgIntro
       }
       return mod.LgIntroHide
@@ -50,8 +51,11 @@ const Home: NextPage = () => {
       </Box>
       <Box display={{ base: 'none', lg: 'block' }}>
         <LgIntro />
+        <Box h="100vh" w="full" position="relative" bg="#000000">
+          <DescTextDesktop />
+        </Box>
       </Box>
-      <Box h="200vh" bg="#000000"></Box>
+      <Box h="200vh" bg="#000000" border="3px solid #000000"></Box>
     </Box>
   )
 }

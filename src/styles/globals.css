@@ -3,7 +3,18 @@ body {
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
+    /* overflow-x: hidden;   */
+    background: #000000;
+}
+
+@font-face {
+    font-family: 'goonies';
+    src: url(/font/Goonies.ttf);
+}
+
+@font-face {
+    font-family: 'damion';
+    src: url(/font/Damion.ttf);
 }
 
 a {
@@ -17,6 +28,73 @@ a {
 
 .track-on-window {
     transform-style: preserve-3d;
+}
+
+.sticky {
+    background: rgba(255, 255, 255, 0.4);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    /* z-index: 10; */
+}
+
+.overflow {
+    contain: pain;
+    position: absolute;
+    /*this is required for clip-paths to work*/
+    -webkit-clip-path: inset(0);
+    /* safari*/
+    clip-path: inset(0);
+    clip: rect(0px, auto, auto, 0px);
+    /* IE11/Edge (not that IE11 supports sticky anyway!) */
+}
+
+.intro_author {
+    font-family: damion;
+    font-display: swap;
+}
+
+.intro_text {
+    font-family: goonies;
+    font-display: swap;
+}
+
+
+/* scroll down */
+
+.mousey {
+    width: 6px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+}
+
+.scroller {
+    width: 4px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+    animation-iteration-count: infinite;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(15px);
+        opacity: 0;
+    }
 }
 
 @media (prefers-color-scheme: dark) {

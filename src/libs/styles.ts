@@ -30,7 +30,7 @@ const theme = extendTheme({
     sm: '375px',
     md: '520px',
     lg: '960px',
-    xl: '',
+    xl: '1280px',
   },
 })
 const customTheme = extendTheme({ theme })

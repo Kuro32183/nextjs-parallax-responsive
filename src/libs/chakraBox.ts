@@ -19,13 +19,7 @@ export const LgBox = chakra(motion.div, {
   },
 })
 
-export const Lake = chakra(motion.img, {
-  shouldForwardProp: (prop) => {
-    return shouldForwardProp(prop) || prop === 'transition'
-  },
-})
-
-export const Mountain = chakra(motion.img, {
+export const ScaleBox = chakra(motion.div, {
   shouldForwardProp: (prop) => {
     return shouldForwardProp(prop) || prop === 'transition'
   },
@@ -46,17 +40,32 @@ export const RFlowerBox = chakra(motion.img, {
     return shouldForwardProp(prop) || prop === 'transition'
   },
 })
-export const LTree = chakra(motion.img, {
-  shouldForwardProp: (prop) => {
-    return shouldForwardProp(prop) || prop === 'transition'
-  },
-})
-export const RTree = chakra(motion.img, {
+export const Tree = chakra(motion.img, {
   shouldForwardProp: (prop) => {
     return shouldForwardProp(prop) || prop === 'transition'
   },
 })
 export const TaxiBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => {
+    return shouldForwardProp(prop) || prop === 'transition'
+  },
+})
+export const TextBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => {
+    return shouldForwardProp(prop) || prop === 'transition'
+  },
+})
+export const BgBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => {
+    return shouldForwardProp(prop) || prop === 'transition'
+  },
+})
+export const DescBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => {
+    return shouldForwardProp(prop) || prop === 'transition'
+  },
+})
+export const DescTextBox = chakra(motion.p, {
   shouldForwardProp: (prop) => {
     return shouldForwardProp(prop) || prop === 'transition'
   },

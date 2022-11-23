@@ -1,14 +1,14 @@
 import React from 'react'
-import { Image } from '@chakra-ui/react'
+import { Image, Box } from '@chakra-ui/react'
 import { useViewportScroll, useTransform } from 'framer-motion'
 import Bird from './item/Bird'
 import Smoke from './item/Smoke'
-import { MobileText } from './item/IntroText'
+import { IntroText } from './item/IntroText'
 import { useInView } from 'react-intersection-observer'
-import { MdBox, Mountain, Lake, RTree, LTree, TaxiBox } from '../libs/chakraBox'
-import RFlower from './item/RFlower'
-import LFlower from './item/LFlower'
+import { MdBox, TaxiBox, Tree, ScaleBox, BgBox, DescBox } from '../libs/chakraBox'
 import Cloud from './item/Cloud'
+import { DescTextTablet } from './item/DescText'
+import ScrollDown from './item/ScrollDown'
 
 declare module 'react' {
   interface CSSProperties {
@@ -26,60 +26,49 @@ export function MdIntro() {
   })
   const { scrollY } = useViewportScroll()
   const screenHeight = document.documentElement.clientHeight
-  const scaleTree = useTransform(scrollY, [-50, screenHeight], [1, 3])
-  const yTree = useTransform(scrollY, [0, screenHeight], [-50, -screenHeight + 100])
-  const xTaxi = useTransform(scrollY, [0, screenHeight], [0, -950])
-  const scaleTaxi = useTransform(scrollY, [0, screenHeight], [1, 1.5])
-  const yMountain = useTransform(scrollY, [0, screenHeight], [0, 200])
-  const yLake = useTransform(scrollY, [0, screenHeight], [0, 150])
+  const scaleBox = useTransform(scrollY, [0, screenHeight / 6], [1, 1.1])
+  const scaleTree = useTransform(scrollY, [0, screenHeight], [1, 3])
+  const xTaxi = useTransform(scrollY, [0, screenHeight], [0, -800])
+  const opacityBox = useTransform(scrollY, [screenHeight / 4, screenHeight / 3], [0, 0.5])
   return (
-    <MdBox
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      // @ts-ignore no problem in operation, although type error appears.
-      transition={{ duration: 0.8 }}
-      position="relative"
-      h="100vh"
-      w="100%"
-    >
-      <Image position="absolute" w="full" srcSet="/md/bg.webp" src="/md/bg.png" alt="background" />
-      <Cloud src={'/md/cloud.png'} srcSet={'/md/cloud.webp'} />
-      <MobileText />
-      <Bird />
-      <TaxiBox style={{ x: xTaxi, scale: scaleTaxi }} w={{ base: '100%' }}>
-        <Smoke />
-        <Image position="absolute" w="full" srcSet="/md/taxi.webp" src="/md/taxi.png" alt="taxi" />
-      </TaxiBox>
-      <Image position="absolute" w="full" srcSet="/md/blossum.webp" src="/md/blossum.png" alt="blossum" />
-      <Image position="absolute" w="full" srcSet="/md/tree_r_top.webp" src="/md/tree_r_top.png" alt="top tree" />
-      <Mountain
-        style={{ y: yMountain }}
-        position="absolute"
-        w="full"
-        srcSet="/md/mountain.webp"
-        src="/md/mountain.png"
-        alt="mountain"
-      />
-      <Lake style={{ y: yLake }} position="absolute" w="full" srcSet="/md/lake.webp" src="/sm/lake.png" alt="lake" />
-      <Image position="absolute" w="full" srcSet="/md/base.webp" src="/md/base.png" alt="base" />
-      <LFlower srcSet={'/md/tree_l_flower_yellow.webp'} src={'/md/tree_l_flower_yellow.png'} />
-      <RFlower srcSet={'/md/tree_r_flower_blue.webp'} src={'/md/tree_r_flower_blue.png'} />
-      <LTree
-        style={{ scale: scaleTree, y: yTree }}
-        position="absolute"
-        w="full"
-        srcSet="/md/tree_l_bottom.webp"
-        src="/md/tree_l_bottom.png"
-        alt="left bottom tree"
-      />
-      <RTree
-        style={{ scale: scaleTree, y: yTree }}
-        position="absolute"
-        w="full"
-        srcSet="/md/tree_r_bottom.webp"
-        src="/md/tree_r_bottom.png"
-        alt="right bottom tree"
-      />
+    // overflow "clip"!!
+    <MdBox position="relative" h="260vh" overflow="clip" bg="#000000">
+      <ScaleBox style={{ scale: scaleBox }} position="sticky" maxWidth="100vw" maxHeight="100vh" top="0">
+        <Image position="absolute" w="full" srcSet="/md/bg.webp" src="/md/bg.png" alt="background" />
+        <Cloud src={'/md/cloud.png'} srcSet={'/md/cloud.webp'} />
+        <Bird />
+        <Image position="absolute" w="full" srcSet="/md/mountain.webp" src="/md/mountain.png" alt="mountain" />
+        <IntroText />
+        <TaxiBox style={{ x: xTaxi }} transition={{ ease: 'easeInOut' }} w={{ base: '100%' }}>
+          <Smoke />
+          <Image position="absolute" w="full" srcSet="/md/taxi.webp" src="/md/taxi.png" alt="taxi" />
+        </TaxiBox>
+        <Image position="absolute" w="full" srcSet="/md/base.webp" src="/md/base.png" alt="base" />
+
+        <Tree
+          style={{ scale: scaleTree }}
+          className="overflow"
+          position="absolute"
+          w="full"
+          srcSet="/md/tree.webp"
+          src="/md/tree.png"
+          alt="tree"
+        />
+        <BgBox
+          transition={{ ease: 'easeInOut' }}
+          style={{ opacity: opacityBox }}
+          position="absolute"
+          bg="#000000"
+          h="100vh"
+          w="100%"
+        >
+          {' '}
+        </BgBox>
+        <DescTextTablet />
+        <ScrollDown />
+      </ScaleBox>
+
+      <DescBox />
     </MdBox>
   )
 }

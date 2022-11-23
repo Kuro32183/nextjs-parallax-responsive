@@ -1,0 +1,10 @@
+<svg style="overflow: visible;">
+ <desc>Created with Snap</desc>
+ <rect x="1" y="1" width="30" height="48" rx="19" ry="15" stroke="#fff" fill="none"
+style="stroke-width: 2; stroke-linecap: round; opacity: 0.3;">
+ </rect>
+<rect class="animated" x="1" y="1" width="30" height="48" rx="19" ry="15" stroke="#ffffff" fill="none"
+ style="stroke-width: 2; stroke-linecap: round; opacity: 0.8; visibility: visible; stroke-dashoffset: 0; stroke-dasharray: 0px, 0px;">
+ </rect>
+<circle class="ball" cx="16" cy="16.638031364511352" r="2.8000000000000003" fill="#ffffff" stroke="none"></circle>
+</svg>

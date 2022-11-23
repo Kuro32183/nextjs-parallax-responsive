@@ -9,7 +9,7 @@ type CloudProps = {
 const Cloud: FC<CloudProps> = (props) => {
   return (
     <CloudBox
-      animate={{ scale: [1.1, 1, 1.1] }}
+      animate={{ scale: [1, 1.07, 1] }}
       // @ts-ignore no problem in operation, although type error appears.
       transition={{
         repeat: Infinity,
