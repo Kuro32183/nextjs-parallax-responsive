@@ -29,7 +29,7 @@ export function DescTextMobile() {
   const parallaxBgBox = [
     {
       start: 0,
-      duration: 1000,
+      duration: 800,
       properties: [
         {
           startValue: 0,
@@ -83,6 +83,32 @@ export function DescTextMobile() {
 }
 
 export function DescTextDesktop() {
+  // const parallaxDesc = [
+  //   {
+  //     start: 0,
+  //     duration: 600,
+  //     properties: [
+  //       {
+  //         startValue: 100,
+  //         endValue: 0,
+  //         property: 'translateY',
+  //       },
+  //     ],
+  //   },
+  // ]
+  const parallaxBgBox = [
+    {
+      start: 0,
+      duration: 600,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: 'opacity',
+        },
+      ],
+    },
+  ]
   const [ref, inView] = useInView({
     threshold: 0.6,
   })
@@ -98,36 +124,36 @@ export function DescTextDesktop() {
   const yText = useTransform(scrollY, [screenHeight - 100, screenHeight - 0], [50, 0])
 
   return (
-    <DescBox
-      color="white"
-      style={{ opacity: opacityText }}
-      position="relative"
-      top="0"
-      m="0 auto"
-      px={{ base: '20%' }}
-      pt={{ base: '30%' }}
-      bg="#000000"
-      h="120vh"
-      w="full"
-      flex="column"
-      align-items="center"
-      ref={ref}
+    <Plx
+      parallaxData={parallaxBgBox}
+      style={{
+        width: '100%',
+      }}
     >
-      <Text
-        fontSize={{ md: '1.5rem' }}
+      <DescBox
+        color="white"
+        position="relative"
+        top="0"
+        m="0 auto"
+        px={{ base: '20%' }}
+        pt={{ base: '30%' }}
+        bg="#000000"
+        h="100vh"
+        w="full"
+        flex="column"
+        align-items="center"
         fontFamily="monospace"
-        fontWeight="600"
-        textAlign="center"
-        letterSpacing="1.5px"
-        pb={4}
-        className=""
       >
-        Hi, I'm Kuro32183 !
-      </Text>
-      <DescTextBox style={{ y: yText }} textAlign="left" letterSpacing="1px" className="">
-        I love designing websites and branding for client. This website is developed as a portfolio. Please scroll down
-        for more about me, technical explanations about this website, other products and blogs below! Thank you.
-      </DescTextBox>
-    </DescBox>
+        <Text fontSize={{ md: '1.5rem' }} fontWeight="600" textAlign="center" letterSpacing="1.5px" pb={4} className="">
+          Hi, I'm Kuro32183 !
+        </Text>
+        {/* <Plx parallaxData={parallaxDesc}> */}
+        <Text textAlign="left" letterSpacing="1px" className="">
+          I love designing websites and branding for client. This website is developed as a portfolio. Please scroll
+          down for more about me, technical explanations about this website, other products and blogs below! Thank you.
+        </Text>
+        {/* </Plx> */}
+      </DescBox>
+    </Plx>
   )
 }
