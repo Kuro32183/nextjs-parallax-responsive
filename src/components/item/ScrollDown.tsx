@@ -1,4 +1,4 @@
-import { Image, Box } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import React from 'react'
 
 const ScrollDown = () => {
@@ -10,7 +10,7 @@ const ScrollDown = () => {
       position="absolute"
       w="full"
       h="full"
-      left={{ base: '45%', md: '50%' }}
+      left={{ base: '45%', md: '48%', lg: '50%' }}
       top="80vh"
       overflow="visible"
       pb="1rem"

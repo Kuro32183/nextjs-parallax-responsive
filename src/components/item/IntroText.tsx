@@ -1,8 +1,6 @@
 import React from 'react'
-import { Box, Text, Image, Spacer } from '@chakra-ui/react'
-import { useViewportScroll, useTransform } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { TextBox } from '../../libs/chakraBox'
+import { Box, Text, Spacer } from '@chakra-ui/react'
+import { TitleBox } from '../../libs/chakraBox'
 
 declare module 'react' {
   interface CSSProperties {
@@ -11,18 +9,20 @@ declare module 'react' {
 }
 
 export function IntroText() {
-  const [ref, inView] = useInView({
-    threshold: 0.6,
-  })
-  const { scrollY } = useViewportScroll()
-  const screenHeight = document.documentElement.clientHeight
-  const opacityText = useTransform(scrollY, [0, screenHeight / 3, screenHeight / 2], [1, 1, 0])
   return (
     <>
-      <TextBox
-        style={{ opacity: opacityText }}
+      {/* <Plx parallaxData={parallaxTitle}> */}
+      <TitleBox
+        animate={{ y: [50, 0], opacity: [0, 1] }}
+        // @ts-ignore no problem in operation, although type error appears.
+        transition={{
+          duration: 0.8,
+          // delay: 0.5,
+          type: 'spring',
+          stiffness: 200,
+        }}
         position="absolute"
-        top={{ base: '15vh', md: '15vh' }}
+        top="0"
         left="0"
         right="0"
         bottom="0"
@@ -34,21 +34,23 @@ export function IntroText() {
           lineHeight={{ base: '2rem', md: '3rem' }}
           color="#FBF73A"
         >
-          <Text
+          <Spacer pt={{ base: '10vh', sm: '15vh', md: '10vh' }} />
+          {/* <Text
             fontSize={{ base: '0.8rem', md: '1.5rem' }}
             fontWeight="600"
             pb={{ base: 6, md: '3rem' }}
             className="intro_author"
           >
             Produced by Kuro32183
-          </Text>
+          </Text> */}
           <Text fontSize={{ base: '3.5rem', sm: '4.5rem', md: '8rem' }} fontWeight="800" className="intro_text">
-            Into <Spacer pt={{ base: '1.5rem', sm: '2.5rem', md: 20 }} />
-            the <Spacer pt={{ base: '1.5rem', sm: '2.5rem', md: 20 }} />
+            Into <Spacer pt={{ base: '1.5rem', sm: '3rem', md: '4.5rem' }} />
+            the <Spacer pt={{ base: '1.5rem', sm: '3rem', md: '4.5rem' }} />
             Wild
           </Text>
         </Box>
-      </TextBox>
+      </TitleBox>
+      {/* </Plx> */}
     </>
   )
 }
@@ -59,7 +61,7 @@ export function DesktopText() {
       position="absolute"
       top={{ md: '25%' }}
       left={{ md: '35%' }}
-      fontSize={{ base: '3rem', lg: '6.5rem' }}
+      fontSize={{ base: '3rem', lg: '7.5rem' }}
       fontWeight="400"
     >
       <Box as="div" letterSpacing="2.5px" top="0%" className="text_container">

@@ -30,24 +30,23 @@ a {
     transform-style: preserve-3d;
 }
 
-.sticky {
+
+/* .sticky {
     background: rgba(255, 255, 255, 0.4);
     position: sticky;
     top: 0;
     width: 100%;
-    /* z-index: 10; */
-}
+    z-index: 10;
+} */
 
-.overflow {
+
+/* .overflow {
     contain: pain;
     position: absolute;
-    /*this is required for clip-paths to work*/
     -webkit-clip-path: inset(0);
-    /* safari*/
     clip-path: inset(0);
     clip: rect(0px, auto, auto, 0px);
-    /* IE11/Edge (not that IE11 supports sticky anyway!) */
-}
+} */
 
 .intro_author {
     font-family: damion;
@@ -63,10 +62,10 @@ a {
 /* scroll down */
 
 .mousey {
-    width: 6px;
-    padding: 10px 15px;
-    height: 35px;
-    border: 2px solid #fff;
+    width: 4px;
+    padding: 7px 10px;
+    height: 30px;
+    border: 1.5px solid #fff;
     border-radius: 25px;
     opacity: 0.75;
     box-sizing: content-box;

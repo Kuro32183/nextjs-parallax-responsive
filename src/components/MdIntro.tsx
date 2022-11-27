@@ -1,14 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import { Image, Box } from '@chakra-ui/react'
-import { useViewportScroll, useTransform } from 'framer-motion'
+import { Image, Box, Flex } from '@chakra-ui/react'
 import Bird from './item/Bird'
 import Smoke from './item/Smoke'
 import { IntroText } from './item/IntroText'
-import { useInView } from 'react-intersection-observer'
-import { MdBox, TaxiBox, Tree, ScaleBox, BgBox, DescBox } from '../libs/chakraBox'
 import Cloud from './item/Cloud'
-import { DescTextTablet } from './item/DescText'
+import { DescTextMobile } from './item/DescText'
 import ScrollDown from './item/ScrollDown'
+import Plx from 'react-plx'
+import ImageBox from './item/ImageBox'
 
 declare module 'react' {
   interface CSSProperties {
@@ -21,54 +22,128 @@ export function MdIntroHide() {
 }
 
 export function MdIntro() {
-  const [ref, inView] = useInView({
-    threshold: 0.6,
-  })
-  const { scrollY } = useViewportScroll()
-  const screenHeight = document.documentElement.clientHeight
-  const scaleBox = useTransform(scrollY, [0, screenHeight / 6], [1, 1.1])
-  const scaleTree = useTransform(scrollY, [0, screenHeight], [1, 3])
-  const xTaxi = useTransform(scrollY, [0, screenHeight], [0, -800])
-  const opacityBox = useTransform(scrollY, [screenHeight / 4, screenHeight / 3], [0, 0.5])
+  const parallaxTree = [
+    {
+      start: 0,
+      end: 700,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 3,
+          property: 'scale',
+        },
+      ],
+    },
+  ]
+  const parallaxBox = [
+    {
+      start: 0,
+      end: 800,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 1.1,
+          property: 'scale',
+        },
+      ],
+    },
+  ]
+  const parallaxTaxi = [
+    {
+      start: 0,
+      end: 1000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -800,
+          property: 'translateX',
+        },
+      ],
+    },
+  ]
+  const parallaxTitle = [
+    {
+      start: 0,
+      end: 200,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: 'opacity',
+        },
+      ],
+    },
+  ]
   return (
-    // overflow "clip"!!
-    <MdBox position="relative" h="260vh" overflow="clip" bg="#000000">
-      <ScaleBox style={{ scale: scaleBox }} position="sticky" maxWidth="100vw" maxHeight="100vh" top="0">
-        <Image position="absolute" w="full" srcSet="/md/bg.webp" src="/md/bg.png" alt="background" />
+    <Box>
+      <Plx
+        parallaxData={parallaxBox}
+        style={{
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          width: '100%',
+        }}
+      >
+        <ImageBox src={'/md/bg.png'} srcSet={'/md/bg.webp'} alt={'background'} />
         <Cloud src={'/md/cloud.png'} srcSet={'/md/cloud.webp'} />
-        <Bird />
-        <Image position="absolute" w="full" srcSet="/md/mountain.webp" src="/md/mountain.png" alt="mountain" />
-        <IntroText />
-        <TaxiBox style={{ x: xTaxi }} transition={{ ease: 'easeInOut' }} w={{ base: '100%' }}>
-          <Smoke />
-          <Image position="absolute" w="full" srcSet="/md/taxi.webp" src="/md/taxi.png" alt="taxi" />
-        </TaxiBox>
-        <Image position="absolute" w="full" srcSet="/md/base.webp" src="/md/base.png" alt="base" />
-
-        <Tree
-          style={{ scale: scaleTree }}
-          className="overflow"
-          position="absolute"
-          w="full"
-          srcSet="/md/tree.webp"
-          src="/md/tree.png"
-          alt="tree"
-        />
-        <BgBox
-          transition={{ ease: 'easeInOut' }}
-          style={{ opacity: opacityBox }}
-          position="absolute"
-          bg="#000000"
-          h="100vh"
-          w="100%"
+        {/* <Bird /> */}
+        <ImageBox src={'/md/mountain.png'} srcSet={'/md/mountain.webp'} alt={'mountain'} />
+        <Plx
+          parallaxData={parallaxTitle}
+          style={{
+            position: 'fixed',
+            left: 0,
+            top: '20vw',
+            width: '100%',
+          }}
         >
-          {' '}
-        </BgBox>
-        <DescTextTablet />
+          <IntroText />
+        </Plx>
+        <ImageBox src={'/md/base.png'} srcSet={'/md/base.webp'} alt={'base'} />
+        <Plx parallaxData={parallaxTaxi}>
+          <Flex>
+            {/* <Smoke /> */}
+            <Image
+              style={{ width: '100%', position: 'absolute', top: '0%', left: '-10%' }}
+              src="/md/taxi.png"
+              alt="background"
+            />
+          </Flex>
+        </Plx>
         <ScrollDown />
-      </ScaleBox>
+        <Plx
+          parallaxData={parallaxTree}
+          style={{
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            width: '100%',
+          }}
+        >
+          <Image style={{ width: '100%' }} src="/md/tree.png" alt="tree" />
+        </Plx>
+      </Plx>
 
-      <DescBox />
-    </MdBox>
+      <DescTextMobile />
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 40,
+          paddingTop: '300vh',
+          height: '300vh',
+          width: '100vw',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            background: '#000',
+            height: '100%',
+            width: '100%',
+          }}
+        ></div>
+      </div>
+    </Box>
   )
 }

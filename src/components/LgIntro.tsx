@@ -1,13 +1,14 @@
 import React from 'react'
 import { Box, Image } from '@chakra-ui/react'
 import Tilt from 'react-parallax-tilt'
-import { TaxiBox } from '../libs/chakraBox'
+import { TaxiBox, CloudBox } from '../libs/chakraBox'
 import Smoke from './item/Smoke'
 import Cloud from './item/Cloud'
 import Bird from './item/Bird'
 import LFlower from './item/LFlower'
 import RFlower from './item/RFlower'
 import { DesktopText } from './item/IntroText'
+import ScrollDown from './item/ScrollDown'
 
 export function LgIntroHide() {
   return <React.Fragment />
@@ -68,6 +69,7 @@ export function LgIntro() {
           transform="translateZ(80px)"
         />
       </Tilt>
+      <ScrollDown />
     </Box>
   )
 }

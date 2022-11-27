@@ -60,6 +60,11 @@ export const BgBox = chakra(motion.div, {
     return shouldForwardProp(prop) || prop === 'transition'
   },
 })
+export const TitleBox = chakra(motion.p, {
+  shouldForwardProp: (prop) => {
+    return shouldForwardProp(prop) || prop === 'transition'
+  },
+})
 export const DescBox = chakra(motion.div, {
   shouldForwardProp: (prop) => {
     return shouldForwardProp(prop) || prop === 'transition'
